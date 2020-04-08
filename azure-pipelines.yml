@@ -20,6 +20,7 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+# ASP.NET Build
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -34,10 +35,14 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
+# Azure Deploy App Web
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'RG TRADEFORCE_TERRAFORM on NEOGRID - DEV'
     appType: 'webApp'
     WebAppName: 'tfportal-dev'
-    packageForLinux: '$(build.artifactStagingDirectory)/**/*.zip'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'TRADEFORCE_TERRAFORM'
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
