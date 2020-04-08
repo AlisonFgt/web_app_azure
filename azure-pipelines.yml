@@ -45,4 +45,4 @@ steps:
     deployToSlotOrASE: true
     ResourceGroupName: 'TRADEFORCE_TERRAFORM'
     SlotName: 'production'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
