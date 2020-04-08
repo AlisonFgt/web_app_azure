@@ -34,7 +34,10 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
-- task: VSTest@2
+- task: AzureRmWebAppDeployment@4
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'RG TRADEFORCE_TERRAFORM on NEOGRID - DEV'
+    appType: 'webApp'
+    WebAppName: 'tfportal-dev'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
