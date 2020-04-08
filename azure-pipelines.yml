@@ -40,4 +40,4 @@ steps:
     azureSubscription: 'RG TRADEFORCE_TERRAFORM on NEOGRID - DEV'
     appType: 'webApp'
     WebAppName: 'tfportal-dev'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(build.artifactStagingDirectory)/**/*.zip'
